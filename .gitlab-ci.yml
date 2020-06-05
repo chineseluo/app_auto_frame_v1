@@ -1,0 +1,14 @@
+image: XXX
+stages:
+  - test
+
+test_ui_auto:
+  stage: test
+  script:
+    - python run.py
+  artifacts:
+    paths:
+      - Report/allure-report
+    expire_in: 1 week
+  only:
+    - luozw-ui-auto

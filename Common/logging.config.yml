@@ -1,0 +1,31 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(levelname)s - %(message)s'
+loggers:
+  mylogger:
+    level: DEBUG
+    handlers: [console,file_handler,error_handler]
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+  file_handler:
+    class: logging.FileHandler
+    level: DEBUG
+    filename: ./Logs/all.log
+    formatter: simple
+    mode: 'w'
+    encoding: 'utf-8'
+
+  error_handler:
+    class: logging.FileHandler
+    level: ERROR
+    filename: ./Logs/error.log
+    formatter: simple
+    mode: 'w'
+    encoding: 'utf-8'
+
+

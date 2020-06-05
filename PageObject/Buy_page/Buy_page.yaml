@@ -1,0 +1,9 @@
+﻿#封装需要操作的元素对象
+desc: "购买页面元素操作对象"
+parameters:
+  - elem_name: "ProductBuyBtn"
+    desc: "产品购买按钮"
+    data: {
+      method: "CLASS_NAME",
+      value: "ProductBuyBtn"
+    }
