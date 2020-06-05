@@ -21,3 +21,6 @@ locator_text_1 = 'new UiSelector().text("请输入手机号")'
 driver.find_element_by_android_uiautomator(locator_text_1).send_keys("18383398524")
 locator_text_2 = 'new UiSelector().text("请输入验证码")'
 driver.find_element_by_android_uiautomator(locator_text_2).send_keys("123456")
+list = driver.find_elements_by_class_name("android.widget.EditText")
+for item in list:
+    print(item)

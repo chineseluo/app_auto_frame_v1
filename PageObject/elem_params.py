@@ -86,15 +86,5 @@ class Login_page_elem(Elem_params):
         super(Login_page_elem, self).__init__('Login_page', 'Login_page.yaml')
 
 
-class Buy_page_elem(Elem_params):
-    def __init__(self):
-        super(Buy_page_elem, self).__init__('Buy_page', 'Buy_page.yaml')
-
-
-class Register_page_elem(Elem_params):
-    def __init__(self):
-        super(Register_page_elem, self).__init__('Register_page', 'Register_page.yaml')
-
-
 if __name__ == '__main__':
     login_page = Login_page_elem()

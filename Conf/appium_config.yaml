@@ -1,0 +1,4 @@
+﻿appium_config:
+  #配置appium启动参数
+  appium_start_cmd: "appium"
+
