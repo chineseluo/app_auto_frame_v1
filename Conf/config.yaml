@@ -1,7 +1,12 @@
 allure_environment:
-  URL: https://github.com/chineseluo/ui_auto_frame_v2
+  URL: https://github.com/chineseluo/app_auto_frame_v1
   description: test description
   username: 848257135@qq.com
   version: V0.12.0
-test_info:
-  test_URL: https://snail.zhuozhuo.io/?n=fastCat.fcFrontSnail.NewFront.NewFront.PCLoginPage
+test_android_info:
+  Remote_URL: "http://127.0.0.1:4723/wd/hub"
+  platformName: "Android"
+  deviceName: "127.0.0.1:62001"
+  platformVersion: "5.1.1"
+  appPackage: "cn.com.smartfleet.app.admin"
+  appActivity: "cn.com.smartfleet.app.admin.MainActivity"
