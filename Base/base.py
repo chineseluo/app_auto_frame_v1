@@ -1,5 +1,5 @@
 # coding:utf-8
-from selenium import webdriver
+from appium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium.webdriver.common.by import By
@@ -46,6 +46,25 @@ def get_locator(page_elem_class, elem_name):
                 return elem_locator
             elif method == "CSS_SELECTOR" and value is not None:
                 return elem_locator
+            elif method == "IOS_UIAUTOMATION" and value is not None:
+                return elem_locator
+            elif method == "IOS_PREDICATE" and value is not None:
+                return elem_locator
+            elif method == "IOS_CLASS_CHAIN" and value is not None:
+                return elem_locator
+            elif method == "ANDROID_UIAUTOMATOR" and value is not None:
+                return elem_locator
+            elif method == "ANDROID_VIEWTAG" and value is not None:
+                return elem_locator
+            elif method == "WINDOWS_UI_AUTOMATION" and value is not None:
+                return elem_locator
+            elif method == "ACCESSIBILITY_ID" and value is not None:
+                return elem_locator
+            elif method == "IMAGE" and value is not None:
+                return elem_locator
+            elif method == "CUSTOM" and value is not None:
+                return elem_locator
+
             else:
                 logging.error("元素名称：{}，此元素定位方式异常，定位元素值异常，请检查！！！".format(elem_name))
 

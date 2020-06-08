@@ -7,14 +7,14 @@
 # @Software: PyCharm
 from Base.base import Base
 from selenium import webdriver
-from PageObject.elem_params import Login_page_elem
+from ActivityObject.elem_params import Login_activity_elem
 
 
-# 封装速涡手游加速器登录页面操作对象操作方法
-class Login_page(Base):
+# 封装车联网app登录页面操作对象操作方法
+class Login_activity(Base):
     def __init__(self, driver):
         # 初始化页面元素对象，即yaml文件对象
-        self.elem_locator = Login_page_elem()
+        self.elem_locator = Login_activity_elem()
         # 初始化driver
         super().__init__(driver)
 

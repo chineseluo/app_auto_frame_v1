@@ -40,15 +40,15 @@ def run_all_case(browser):
     # 定义features集合
     allure_features = ["--allure-features"]
     allure_features_list = [
-        'Register_page_case',
-        'Login_page_case'
+        # 'Register_page_case',
+        'Login_activity_case'
     ]
     allure_features_args = ",".join(allure_features_list)
     # 定义stories集合
     allure_stories = ["--allure-stories"]
     allure_stories_args = ['']
     allure_path_args = ['--alluredir', report_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--browser={}'.format(browser), '--browser_opt={}'.format("open")]
+    test_args = ['-s', '-q', '--mobile_system={}'.format("android")]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
         allure_features_args] + allure_stories + allure_stories_args

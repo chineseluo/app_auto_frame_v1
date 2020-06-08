@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 
 pub_api = PubMethod()
 root_dir = os.path.dirname(os.path.dirname(__file__))
-config_path = os.path.join(root_dir, 'PageObject')
+config_path = os.path.join(root_dir, 'ActivityObject')
 config_path = os.path.abspath(config_path)
 
 
@@ -81,10 +81,10 @@ class Elem_params:
 
 
 # 注册yaml文件对象
-class Login_page_elem(Elem_params):
+class Login_activity_elem(Elem_params):
     def __init__(self):
-        super(Login_page_elem, self).__init__('Login_page', 'Login_page.yaml')
+        super(Login_activity_elem, self).__init__('Login_activity', 'Login_activity.yaml')
 
 
 if __name__ == '__main__':
-    login_page = Login_page_elem()
+    login_page = Login_activity_elem()

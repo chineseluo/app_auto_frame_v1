@@ -5,12 +5,12 @@
 # @File    : conftest.py
 # @Software: PyCharm
 import pytest
-from PageObject.Login_page.login_page import Login_page
+from ActivityObject.Login_activity.login_activity import Login_activity
 
 
 @pytest.fixture(scope="function")
 def login_page_class_load(function_driver):
-    login_page = Login_page(function_driver)
-    yield login_page
+    login_activity = Login_activity(function_driver)
+    yield login_activity
 
 

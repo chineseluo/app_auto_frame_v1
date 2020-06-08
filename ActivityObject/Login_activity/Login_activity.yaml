@@ -1,0 +1,20 @@
+﻿#封装需要操作的元素对象
+desc: "登录页面元素操作对象"
+parameters:
+  - elem_name: "Username"
+    desc: "用户输入框名称"
+    data: {
+      method: "NAME",
+      value: "Username"
+    }
+
+  - elem_name: "Password"
+    desc: "密码输入框名称"
+    data: {
+      method: "NAME",
+      value: "Password"
+    }
+
+
+
+

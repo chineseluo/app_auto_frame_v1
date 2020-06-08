@@ -6,7 +6,7 @@ import logging
 from Base.assert_method import Assert_method
 
 
-@allure.feature("Login_page_case")
+@allure.feature("Login_activity_case")
 class Test_login_page_case:
 
     @allure.story("Login")
@@ -71,4 +71,4 @@ class Test_login_page_case:
 
 
 if __name__ == "__main__":
-    pytest.main(["test_login_page_case.py"])
+    pytest.main(["test_login_activity_case.py"])
