@@ -40,8 +40,7 @@ def run_all_case(mobile_system):
     # 定义features集合
     allure_features = ["--allure-features"]
     allure_features_list = [
-        # 'Register_page_case',
-        'Login_activity_case'
+        'TestLoginPageCase',
     ]
     allure_features_args = ",".join(allure_features_list)
     # 定义stories集合
@@ -52,6 +51,7 @@ def run_all_case(mobile_system):
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
         allure_features_args] + allure_stories + allure_stories_args
+    print(run_args)
     # 使用pytest.main
     pytest.main(run_args)
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置

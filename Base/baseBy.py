@@ -7,7 +7,7 @@
 @Time    : 2020/6/8 14:42
 @Auth    : luozhongwen
 @Email   : luozw@inhand.com.cn
-@File    : base_by.py
+@File    : BaseBy.py
 @IDE     : PyCharm
 ------------------------------------
 """
@@ -15,7 +15,7 @@ from selenium.webdriver.common.by import By
 from appium.webdriver.common.mobileby import MobileBy
 
 
-class Base_by(By):
+class BaseBy(By):
     IOS_UIAUTOMATION = MobileBy.IOS_UIAUTOMATION
     IOS_PREDICATE = MobileBy.IOS_PREDICATE
     IOS_CLASS_CHAIN = MobileBy.IOS_CLASS_CHAIN

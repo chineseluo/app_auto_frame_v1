@@ -3,13 +3,13 @@
 # @Time    : 2020/6/1 16:45
 # @Author  : luozhongwen
 # @Email   : luozw@inhand.com.cn
-# @File    : assert_method.py
+# @File    : AssertMethod.py
 # @Software: PyCharm
 import logging
 from Common.publicMethod import PubMethod
 
 
-class Assert_method:
+class AssertMethod:
 
     @staticmethod
     def assert_equal_screen_shot(driver, exceptor):
