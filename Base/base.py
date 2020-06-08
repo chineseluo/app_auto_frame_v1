@@ -10,20 +10,20 @@ import time
 import os
 import logging
 from Common.publicMethod import PubMethod
-
+from appium.webdriver.extensions.search_context import AndroidSearchContext
 
 conf_path = os.path.abspath("./Conf/config.yaml")
 
 
-def get_locator(page_elem_class, elem_name):
+def get_locator(activity_elem_class, elem_name):
     """
 
-    @param page_elem_class:传入页面元素对象
+    @param activity_elem_class:传入页面元素对象
     @param elem_name:传入自定义的元素名称
     @return:
     """
-    page_obj_elem = page_elem_class()
-    elems_info = page_obj_elem.info
+    activity_obj_elem = activity_elem_class()
+    elems_info = activity_obj_elem.info
     for item in elems_info:
         if item.info["elem_name"] == elem_name:
             elem_locator = ("By.{}".format(item["data"]["method"]), item["data"]["value"])
@@ -64,7 +64,6 @@ def get_locator(page_elem_class, elem_name):
                 return elem_locator
             elif method == "CUSTOM" and value is not None:
                 return elem_locator
-
             else:
                 logging.error("元素名称：{}，此元素定位方式异常，定位元素值异常，请检查！！！".format(elem_name))
 
@@ -120,7 +119,7 @@ class Base:
                 return elem
             except Exception as e:
                 logging.error("定位不到元素，错误信息为:{}".format(e))
-                return print("定位不到元素")
+                return "定位不到元素"
 
     def find_elements(self, locator):
         """
@@ -212,9 +211,9 @@ class Base:
         elem = self.find_elements(locator)
         try:
             elem_text = elem[index].text
-            logging.info("获取元素组对象，索引位置{}的值成功，值为：{}".format(index, elem_text))
+            logging.info("获取元素组对象，索引位置{}的值获取成功，值为：{}".format(index, elem_text))
         except Exception as e:
-            logging.error("获取元素组对象，索引位置{}的值失败，失败信息为：{}".format(e))
+            logging.error("获取元素组对象，索引位置{}的值获取失败，失败信息为：{}".format(index, e))
         return elem_text
 
     def get_placeholder(self, locator):

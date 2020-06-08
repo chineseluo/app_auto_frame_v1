@@ -9,7 +9,7 @@ from ActivityObject.Login_activity.login_activity import Login_activity
 
 
 @pytest.fixture(scope="function")
-def login_page_class_load(function_driver):
+def login_activity_class_load(function_driver):
     login_activity = Login_activity(function_driver)
     yield login_activity
 

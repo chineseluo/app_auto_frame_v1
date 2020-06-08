@@ -10,6 +10,7 @@ import os
 from Common.publicMethod import PubMethod
 import logging
 from selenium.webdriver.common.by import By
+from Base.base_by import Base_by
 
 pub_api = PubMethod()
 root_dir = os.path.dirname(os.path.dirname(__file__))
@@ -76,6 +77,33 @@ class Elem_params:
                 elif method == "CSS_SELECTOR" and value is not None:
                     elem_locator = (By.CSS_SELECTOR, value)
                     return elem_locator
+                elif method == "IOS_UIAUTOMATION" and value is not None:
+                    elem_locator = (Base_by.IOS_UIAUTOMATION, value)
+                    return elem_locator
+                elif method == "IOS_PREDICATE" and value is not None:
+                    elem_locator = (Base_by.IOS_PREDICATE, value)
+                    return elem_locator
+                elif method == "IOS_CLASS_CHAIN" and value is not None:
+                    elem_locator = (Base_by.IOS_CLASS_CHAIN, value)
+                    return elem_locator
+                elif method == "ANDROID_UIAUTOMATOR" and value is not None:
+                    elem_locator = (Base_by.ANDROID_UIAUTOMATOR, value)
+                    return elem_locator
+                elif method == "ANDROID_VIEWTAG" and value is not None:
+                    elem_locator = (Base_by.ANDROID_VIEWTAG, value)
+                    return elem_locator
+                elif method == "WINDOWS_UI_AUTOMATION" and value is not None:
+                    elem_locator = (Base_by.WINDOWS_UI_AUTOMATION, value)
+                    return elem_locator
+                elif method == "ACCESSIBILITY_ID" and value is not None:
+                    elem_locator = (Base_by.ACCESSIBILITY_ID, value)
+                    return elem_locator
+                elif method == "IMAGE" and value is not None:
+                    elem_locator = (Base_by.IMAGE, value)
+                    return elem_locator
+                elif method == "CUSTOM" and value is not None:
+                    elem_locator = (Base_by.CUSTOM, value)
+                    return elem_locator
                 else:
                     logging.error("元素名称：{}，此元素定位方式异常，定位元素值异常，请检查！！！".format(elem_name))
 
@@ -87,4 +115,5 @@ class Login_activity_elem(Elem_params):
 
 
 if __name__ == '__main__':
-    login_page = Login_activity_elem()
+    login_activity = Login_activity_elem()
+    print(login_activity.get_locator("phone_number"))

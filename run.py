@@ -33,8 +33,8 @@ def modify_report_environment_file(report_widgets_dir):
         json.dump(environment_info, f, ensure_ascii=False, indent=4)
 
 
-def run_all_case(browser):
-    report_dir = os.path.abspath("./Report/{}".format(browser))
+def run_all_case(mobile_system):
+    report_dir = os.path.abspath("./Report/{}".format(mobile_system))
     report_widgets_dir = os.path.abspath("./Report/allure-results")
     # 定义测试用例集合
     # 定义features集合
@@ -48,15 +48,15 @@ def run_all_case(browser):
     allure_stories = ["--allure-stories"]
     allure_stories_args = ['']
     allure_path_args = ['--alluredir', report_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--mobile_system={}'.format("android")]
+    test_args = ['-s', '-q', '--mobile_system={}'.format(mobile_system)]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
         allure_features_args] + allure_stories + allure_stories_args
     # 使用pytest.main
     pytest.main(run_args)
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置
-    cmd = 'allure generate ./Report/{} -o ./Report/{}/allure-results --clean'.format(browser.replace(" ", "_"),
-                                                                                     browser.replace(" ", "_"))
+    cmd = 'allure generate ./Report/{} -o ./Report/{}/allure-results --clean'.format(mobile_system.replace(" ", "_"),
+                                                                                     mobile_system.replace(" ", "_"))
     logging.info("命令行执行cmd:{}".format(cmd))
     try:
         os.system(cmd)
@@ -67,7 +67,7 @@ def run_all_case(browser):
     modify_report_environment_file(report_widgets_dir)
     # 打印url，方便直接访问
     url = '报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-results/index.html'.format(root_dir.split('/')[-1],
-                                                                                      browser.replace(" ", "_"))
+                                                                                      mobile_system.replace(" ", "_"))
     print("输出项目跟目录{}".format(root_dir.split('/')[-1]))
     print(url)
 
@@ -75,26 +75,22 @@ def run_all_case(browser):
 # 命令行参数调用
 def receive_cmd_arg():
     global root_dir
-    input_browser = sys.argv
-    if len(input_browser) > 1:
+    input_mobile_system = sys.argv
+    if len(input_mobile_system) > 1:
         try:
-            if input_browser[1] == "chrome":
+            if input_mobile_system[1] == "android":
                 root_dir.replace("\\", "/")
                 root_dir = root_dir.replace("\\", "/")
-                run_all_case("chrome")
-            elif input_browser[1] == "firefox":
+                run_all_case("android")
+            elif input_mobile_system[1] == "ios":
                 root_dir = root_dir.replace("\\", "/")
-                run_all_case("firefox")
-            elif input_browser[1] == "ie":
-                root_dir.replace("\\", "/")
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case("internet explorer")
+                run_all_case("ios")
             else:
                 logging.error("参数错误，请重新输入！！！")
         except Exception as e:
             logging.error("命令行传参错误信息：{}".format(e))
     else:
-        run_all_case("chrome")
+        run_all_case("android")
 
 
 if __name__ == "__main__":

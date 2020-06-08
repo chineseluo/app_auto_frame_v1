@@ -39,7 +39,7 @@ def function_driver(request):
         'unicodeKeyboard': appium_config['unicodeKeyboard'],
         'resetKeyboard': appium_config['resetKeyboard']
     }
-    driver = webdriver.Remote(appium_config["remote_URL"], desired_caps=desired_caps)
+    driver = webdriver.Remote(appium_config["remote_URL"], desired_caps)
     yield driver
 
 
