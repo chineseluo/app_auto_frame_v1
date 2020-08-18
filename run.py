@@ -34,24 +34,9 @@ def modify_report_environment_file(report_widgets_dir):
 
 
 def run_all_case(mobile_system):
-    report_dir = os.path.abspath("./Report/{}".format(mobile_system))
     report_widgets_dir = os.path.abspath("./Report/allure-results")
-    # 定义测试用例集合
-    # 定义features集合
-    allure_features = ["--allure-features"]
-    allure_features_list = [
-        'TestLoginPageCase',
-    ]
-    allure_features_args = ",".join(allure_features_list)
-    # 定义stories集合
-    allure_path_args = ['--alluredir', report_dir]
-    test_args = ['--mobile_system={}'.format(mobile_system)]
-    # 拼接运行参数
-    run_args = test_args + allure_path_args + allure_features + [
-        allure_features_args]
-    print(run_args)
     # 使用pytest.main
-    pytest.main(run_args)
+    pytest.main()
     # 生成allure报告，需要系统执行命令--clean会清楚以前写入environment.json的配置
     cmd = 'allure generate ./Report/{} -o ./Report/{}/allure-results --clean'.format(mobile_system.replace(" ", "_"),
                                                                                      mobile_system.replace(" ", "_"))

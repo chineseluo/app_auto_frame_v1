@@ -3,10 +3,3 @@ allure_environment:
   description: test description
   username: 848257135@qq.com
   version: V0.12.0
-test_android_info:
-  Remote_URL: "http://127.0.0.1:4723/wd/hub"
-  platformName: "Android"
-  deviceName: "127.0.0.1:62001"
-  platformVersion: "5.1.1"
-  appPackage: "cn.com.smartfleet.app.admin"
-  appActivity: "cn.com.smartfleet.app.admin.MainActivity"

@@ -12,8 +12,6 @@ import logging
 from Common.publicMethod import PubMethod
 from appium.webdriver.extensions.search_context import AndroidSearchContext
 
-conf_path = os.path.abspath("./Conf/config.yaml")
-
 
 def get_locator(activity_elem_class, elem_name):
     """
@@ -75,33 +73,6 @@ class Base:
         self.timeout = 10
         self.poll_frequency = 0.5
 
-    def get_url(self, url):
-        """
-
-        @param url: 测试url
-        """
-        try:
-            self.driver.get(url)
-            logging.info("{}获取成功".format(url))
-        except Exception as e:
-            logging.error("URL获取失败，错误信息为：{}".format(e))
-
-    def get_login_url_from_config(self):
-        """
-
-        @return: 配置文件URL
-        """
-        config_info = PubMethod.read_yaml(conf_path)
-        print("config_info地址：{}".format(config_info))
-        return config_info["test_info"]["test_URL"]
-
-    def login_by_config_url(self):
-        """
-            登录URL
-        """
-        self.driver.maximize_window()
-        self.driver.get(self.get_login_url_from_config())
-
     def find_element(self, locator):
         logging.info("输出定位器信息：{}".format(locator))
         """
@@ -145,23 +116,6 @@ class Base:
             logging.info("frame切换成功")
         except Exception as e:
             logging.error("frame切换失败，错误信息为：{}".format(e))
-
-    def switch_to_handle(self, index):
-        """
-            切换窗口句柄
-        """
-        # 获取当前所有窗口句柄
-        try:
-            handles = self.driver.window_handles
-            logging.info("获取当前所有窗口句柄成功，句柄对象列表为：{}".format(handles))
-        except Exception as e:
-            logging.error("获取当前所有窗口句柄失败，错误信息为：{}".format(e))
-        # 切换到新窗口句柄
-        try:
-            self.driver.switch_to.window(handles[index])
-            logging.info("切换新窗口句柄成功，切换窗口的索引index为：{}".format(index))
-        except Exception as e:
-            logging.error("切换新窗口句柄失败，错误信息为：{}".format(e))
 
     def send_key(self, locator, value):
         """
@@ -244,6 +198,4 @@ class Base:
 
 
 if __name__ == "__main__":
-    print(conf_path)
-    config_info = PubMethod.read_yaml(conf_path)
-    print(config_info["test_info"])
+    pass

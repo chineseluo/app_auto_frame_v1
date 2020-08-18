@@ -1,3 +1,10 @@
+# !/user/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2020/5/12 21:11
+# @Author  : chineseluo
+# @Email   : 848257135@qq.com
+# @File    : run.py
+# @Software: PyCharm
 import random
 import string
 import sys
@@ -6,9 +13,7 @@ import os
 import time
 import logging
 import docker
-import xlrd
 import allure
-from hashlib import md5
 from Common.fileOption import File_option
 
 
@@ -32,12 +37,6 @@ class PubMethod:
             return random.randint(0, 1)
 
     @staticmethod
-    def transfer_md5(msg):
-        hl = md5()
-        hl.update(msg.encode('utf-8'))
-        return hl.hexdigest().upper()
-
-    @staticmethod
     def read_yaml(file):
         """
             读取yaml文件，返回文件对象
@@ -57,12 +56,6 @@ class PubMethod:
     def random_string(strings=string.ascii_letters, length=15):
         values = ''.join(random.choices(strings, k=length))
         return values
-
-    @staticmethod
-    def read_excel(file_path):
-        wb = xlrd.open_workbook(filename=file_path, encoding_override='utf-8')  # 打开文件
-        sheet1 = wb.sheet_by_index(0)  # 通过索引获取表格
-        return sheet1
 
     @staticmethod
     def create_file(file_path):
@@ -111,6 +104,15 @@ class PubMethod:
 
     @staticmethod
     def create_docker_hub_container(base_url, image, name, ports):
+        """
+        创建hub,docker容器
+        :param base_url:docker 地址：端口
+        :param image: 镜像名称
+        :param name: 容器别名
+        :param ports: 映射端口
+        :param links: 连接
+        :return:
+        """
         client = docker.DockerClient(base_url=base_url)
         try:
             client.containers.run(
@@ -128,6 +130,15 @@ class PubMethod:
 
     @staticmethod
     def create_docker_node_container(base_url, image, name, ports, links):
+        """
+        创建node,docker容器
+        :param base_url:docker 地址：端口
+        :param image: 镜像名称
+        :param name: 容器别名
+        :param ports: 映射端口
+        :param links: 连接
+        :return:
+        """
         client = docker.DockerClient(base_url=base_url)
         try:
             client.containers.run(

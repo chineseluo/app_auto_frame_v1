@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2020/5/27 9:15
-# @Author  : luozhongwen
+# @Author  : chineseluo
 # @Email   : 848257135@qq.com
 # @File    : conftest.py
 # @Software: PyCharm
@@ -18,7 +18,6 @@ appium_config = PubMethod.read_yaml(appium_config_path)["appium_config"]
 def pytest_collection_modifyitems(items):
     for item in items:
         item.name = item.name.encode("utf-8").decode("unicode_escape")
-        print(item)
         logging.info(item.name)
         item._nodeid = item._nodeid.encode("utf-8").decode("unicode_escape")
         logging.info(item._nodeid)
@@ -42,6 +41,8 @@ def function_driver(request):
     }
     driver = webdriver.Remote(appium_config["remote_URL"], desired_caps)
     yield driver
+    logging.info("driver.quit:清理driver进程！！！")
+    driver.quit()
 
 
 if __name__ == '__main__':

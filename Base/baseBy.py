@@ -5,8 +5,8 @@
 ------------------------------------
 @Project : app_auto_frame
 @Time    : 2020/6/8 14:42
-@Auth    : luozhongwen
-@Email   : luozw@inhand.com.cn
+@Auth    : chineseluo
+@Email   : 848257135@qq.com
 @File    : BaseBy.py
 @IDE     : PyCharm
 ------------------------------------
