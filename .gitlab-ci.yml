@@ -1,4 +1,4 @@
-image: XXX
+mage: XXX
 stages:
   - test
 

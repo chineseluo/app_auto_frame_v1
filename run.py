@@ -44,13 +44,11 @@ def run_all_case(mobile_system):
     ]
     allure_features_args = ",".join(allure_features_list)
     # 定义stories集合
-    allure_stories = ["--allure-stories"]
-    allure_stories_args = ['']
-    allure_path_args = ['--alluredir', report_dir, '--clean-alluredir']
-    test_args = ['-s', '-q', '--mobile_system={}'.format(mobile_system)]
+    allure_path_args = ['--alluredir', report_dir]
+    test_args = ['--mobile_system={}'.format(mobile_system)]
     # 拼接运行参数
     run_args = test_args + allure_path_args + allure_features + [
-        allure_features_args] + allure_stories + allure_stories_args
+        allure_features_args]
     print(run_args)
     # 使用pytest.main
     pytest.main(run_args)
@@ -61,14 +59,13 @@ def run_all_case(mobile_system):
     try:
         os.system(cmd)
     except Exception as e:
-        logging.error('命令【{}】执行失败！'.format(cmd))
+        logging.error('命令【{}】执行失败，错误信息：{}！'.format(cmd, e))
         sys.exit()
     # 定义allure报告环境信息
     modify_report_environment_file(report_widgets_dir)
     # 打印url，方便直接访问
     url = '报告链接：http://127.0.0.1:63342/{}/Report/{}/allure-results/index.html'.format(root_dir.split('/')[-1],
                                                                                       mobile_system.replace(" ", "_"))
-    print("输出项目跟目录{}".format(root_dir.split('/')[-1]))
     print(url)
 
 
@@ -77,18 +74,13 @@ def receive_cmd_arg():
     global root_dir
     input_mobile_system = sys.argv
     if len(input_mobile_system) > 1:
-        try:
-            if input_mobile_system[1] == "android":
-                root_dir.replace("\\", "/")
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case("android")
-            elif input_mobile_system[1] == "ios":
-                root_dir = root_dir.replace("\\", "/")
-                run_all_case("ios")
-            else:
-                logging.error("参数错误，请重新输入！！！")
-        except Exception as e:
-            logging.error("命令行传参错误信息：{}".format(e))
+        root_dir = root_dir.replace("\\", "/")
+        if input_mobile_system[1] == "android":
+            run_all_case("android")
+        elif input_mobile_system[1] == "ios":
+            run_all_case("ios")
+        else:
+            logging.error("参数错误，请重新输入！！！")
     else:
         run_all_case("android")
 

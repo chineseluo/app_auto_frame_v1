@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2020/5/27 9:15
 # @Author  : luozhongwen
-# @Email   : luozw@inhand.com.cn
+# @Email   : 848257135@qq.com
 # @File    : conftest.py
 # @Software: PyCharm
 import os

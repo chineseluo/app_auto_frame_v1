@@ -8,7 +8,7 @@
 import os
 
 
-class File_option():
+class File_option:
     @staticmethod
     def file_mkdir(filepath):
         if not os.path.exists(filepath):
